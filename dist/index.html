@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="رحلة الراحة لحجز الفنادق وخدمات الضيافة والنقل في مكة المكرمة."
+    />
+    <meta name="theme-color" content="#3d2b1f" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233d2b1f'/%3E%3Cpath d='M15 43V23l17-9 17 9v20M23 43V28l9-5 9 5v15M12 47h40' fill='none' stroke='%23e1bb80' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <title>رحلة الراحة | حجز فنادق مكة</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">تجاوز إلى المحتوى</a>
+
+    <div class="utility-bar">
+      <div class="container utility-inner">
+        <div class="utility-contact" aria-label="Contact numbers">
+          <a href="tel:+966509530219" dir="ltr">+966 50 953 0219</a>
+          <span aria-hidden="true">•</span>
+          <a href="tel:+905302600126" dir="ltr">+90 530 260 0126</a>
+        </div>
+        <div class="language-switcher" aria-label="Language">
+          <button type="button" class="language-button active" data-language="ar" aria-pressed="true">ع</button>
+          <button type="button" class="language-button" data-language="en" aria-pressed="false">EN</button>
+          <button type="button" class="language-button" data-language="tr" aria-pressed="false">TR</button>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Rihlat Al Raha home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 56 56" role="img">
+              <path d="M10 39V21l18-10 18 10v18M18 39V25l10-6 10 6v14M7 44h42" />
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>رحلة الراحة</strong>
+            <small>RIHLAT AL RAHA</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span><span></span>
+          <span class="sr-only" data-i18n="menu">القائمة</span>
+        </button>
+
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+          <a href="#top" data-i18n="navHome">الرئيسية</a>
+          <a href="#hotels" data-i18n="navHotels">الفنادق</a>
+          <a href="#offers" data-i18n="navOffers">العروض</a>
+          <a href="#about" data-i18n="navAbout">من نحن</a>
+          <a href="#contact" data-i18n="navContact">تواصل</a>
+        </nav>
+
+        <a class="button button-small header-cta" href="#reservation" data-i18n="reserveNow">احجز الآن</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero section">
+        <div class="hero-pattern" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="campaign-kicker">
+              <span class="campaign-number">96</span>
+              <span data-i18n="campaignKicker">عرض اليوم الوطني</span>
+            </div>
+            <p class="eyebrow" data-i18n="heroEyebrow">ضيافة منظمة في مكة المكرمة</p>
+            <h1 data-i18n="heroTitle">راحتك تبدأ من أول حجز.</h1>
+            <p class="hero-lede" data-i18n="heroBody">
+              فنادق مختارة وخدمة على مدار الساعة، مع فريق يساعدك من لحظة الاستفسار حتى الوصول.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#reservation" data-i18n="startRequest">ابدأ طلب الحجز</a>
+              <a class="text-link" href="#hotels">
+                <span data-i18n="exploreHotels">استعرض الفنادق</span>
+                <span aria-hidden="true">↙</span>
+              </a>
+            </div>
+            <ul class="trust-list" aria-label="Highlights">
+              <li><span aria-hidden="true">24</span><b data-i18n="service24">خدمة 24 ساعة</b></li>
+              <li><span aria-hidden="true">⌁</span><b data-i18n="freeWifi">إنترنت مجاني</b></li>
+              <li><span aria-hidden="true">✓</span><b data-i18n="fastRequest">طلب سريع</b></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="poster-frame">
+              <img
+                id="hero-poster"
+                src="./assets/promo.jpeg"
+                alt="عرض اليوم الوطني لفندق فيرتا المحبس"
+                width="1080"
+                height="1440"
+              />
+              <div class="poster-caption">
+                <span data-i18n="limitedOffer">لفترة محدودة</span>
+                <strong data-i18n="septemberOffer">عرض سبتمبر الخير</strong>
+              </div>
+            </div>
+            <div class="journey-line" aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="hotels" class="section hotels-section">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="stayEyebrow">إقامتك في مكة</p>
+              <h2 data-i18n="stayTitle">فنادق نرشحها لرحلتك</h2>
+            </div>
+            <p data-i18n="stayBody">اختر الفندق المناسب، ثم أرسل طلبك وسيتواصل معك فريقنا لتأكيد التفاصيل.</p>
+          </div>
+
+          <div class="hotel-grid">
+            <article class="hotel-card">
+              <div class="hotel-media">
+                <img src="./assets/promo.jpeg" alt="فندق فيرتا المحبس" width="1080" height="1440" loading="lazy" />
+                <span class="hotel-city" data-i18n="makkah">مكة المكرمة</span>
+              </div>
+              <div class="hotel-content">
+                <div>
+                  <p class="hotel-label" data-i18n="featuredHotel">فندق مميز</p>
+                  <h3 data-i18n="vertaName">فندق فيرتا المحبس</h3>
+                </div>
+                <p data-i18n="vertaDescription">إقامة مريحة في حي العزيزية مع إفطار وخدمة على مدار الساعة ونقل مجاني للحرم.</p>
+                <ul class="amenity-list">
+                  <li data-i18n="breakfast">إفطار</li>
+                  <li data-i18n="haramTransfer">نقل للحرم</li>
+                  <li data-i18n="service24">خدمة 24 ساعة</li>
+                </ul>
+                <div class="card-actions">
+                  <button class="text-button choose-hotel" type="button" data-hotel="verta" data-i18n="chooseHotel">اختر الفندق</button>
+                  <a class="map-link" href="https://www.google.com/maps?q=Verta+Hotel+Mahbas&amp;ftid=0x15c20591f74560dd:0x76b2c4bc6eaf53ef" target="_blank" rel="noopener" data-i18n="viewMap">عرض الخريطة</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="hotel-card">
+              <div class="hotel-media hotel-media-alt">
+                <img src="./assets/promo-3.jpeg" alt="فندق رفاهية الكرام" width="1080" height="1440" loading="lazy" />
+                <span class="hotel-city" data-i18n="makkah">مكة المكرمة</span>
+              </div>
+              <div class="hotel-content">
+                <div>
+                  <p class="hotel-label" data-i18n="featuredHotel">فندق مميز</p>
+                  <h3 data-i18n="rafahyaName">فندق رفاهية الكرام</h3>
+                </div>
+                <p data-i18n="rafahyaDescription">غرف مرتبة في العزيزية مع مطعم وإفطار واستقبال متاح على مدار الساعة.</p>
+                <ul class="amenity-list">
+                  <li data-i18n="restaurant">مطعم</li>
+                  <li data-i18n="breakfast">إفطار</li>
+                  <li data-i18n="service24">خدمة 24 ساعة</li>
+                </ul>
+                <div class="card-actions">
+                  <button class="text-button choose-hotel" type="button" data-hotel="rafahya" data-i18n="chooseHotel">اختر الفندق</button>
+                  <a class="map-link" href="https://www.google.com/maps?q=Rafahya+Al+Karam+Hotel&amp;ftid=0x15c20534479baa97:0x14023e0b25021155" target="_blank" rel="noopener" data-i18n="viewMap">عرض الخريطة</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="offers" class="section offer-section">
+        <div class="container offer-layout">
+          <div class="offer-copy">
+            <p class="eyebrow eyebrow-light" data-i18n="offerEyebrow">عرض وطني محدود</p>
+            <h2 data-i18n="offerTitle">عزنا بطبعنا، وعروضنا بعزكم.</h2>
+            <p data-i18n="offerBody">إقامة مجددة مع إفطار وخدمة 24 ساعة بسعر خاص لفترة محدودة خلال سبتمبر.</p>
+            <ul class="offer-features">
+              <li data-i18n="renovatedStay">إقامة مجددة</li>
+              <li data-i18n="breakfastIncluded">إفطار مشمول</li>
+              <li data-i18n="supportAnytime">فريق متاح 24 ساعة</li>
+            </ul>
+            <a class="button button-fawn" href="#reservation" data-i18n="getOffer">اطلب العرض</a>
+          </div>
+          <div class="offer-gallery" aria-label="Campaign offers">
+            <figure class="offer-poster" data-languages="ar,en,tr">
+              <img src="./assets/promo-3.jpeg" alt="عرض وطني لفندق رفاهية الكرام" width="1080" height="1440" loading="lazy" />
+            </figure>
+            <figure class="offer-poster offer-poster-turkish" data-languages="tr" hidden>
+              <img src="./assets/promo_tyr.jpeg" alt="Rafahya Al Karam Hotel Turkish offer" width="1054" height="1492" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow" data-i18n="aboutEyebrow">عن رحلة الراحة</p>
+            <h2 data-i18n="aboutTitle">تنظيم واضح، ضيافة موثوقة، وراحة من البداية.</h2>
+          </div>
+          <div class="about-copy">
+            <p data-i18n="aboutBody">نقدم حلول حجز الفنادق وخدمات الضيافة والنقل داخل مكة المكرمة، مع عناية بالتفاصيل وسهولة في التواصل.</p>
+            <div class="service-grid">
+              <article><span>01</span><h3 data-i18n="serviceHotelTitle">حجز الفنادق</h3><p data-i18n="serviceHotelBody">خيارات إقامة مختارة ودعم قبل الوصول.</p></article>
+              <article><span>02</span><h3 data-i18n="serviceTransportTitle">خدمات النقل</h3><p data-i18n="serviceTransportBody">تنظيم النقل داخل مكة وخدمة الحرم حيث تتوفر.</p></article>
+              <article><span>03</span><h3 data-i18n="serviceHospitalityTitle">الضيافة والإعاشة</h3><p data-i18n="serviceHospitalityBody">تنسيق الإفطار والوجبات للمجموعات والضيوف.</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reservation" class="section reservation-section">
+        <div class="container reservation-layout">
+          <div class="reservation-intro">
+            <p class="eyebrow" data-i18n="requestEyebrow">طلب حجز بسيط</p>
+            <h2 data-i18n="requestTitle">أرسل التفاصيل، ونكملها معك عبر واتساب.</h2>
+            <p data-i18n="requestBody">هذا طلب أولي ولا يؤكد الحجز. سيتواصل معك الفريق للتحقق من السعر والتوفر.</p>
+            <div class="reservation-note">
+              <span aria-hidden="true">⌁</span>
+              <p><strong data-i18n="responseTitle">رد سريع</strong><br /><span data-i18n="responseBody">نراجع الطلب ونتواصل معك لتأكيد التفاصيل.</span></p>
+            </div>
+          </div>
+
+          <form id="reservation-form" class="reservation-form" novalidate>
+            <div class="field field-full">
+              <label for="hotel" data-i18n="hotelLabel">الفندق</label>
+              <select id="hotel" name="hotel" required>
+                <option value="" data-i18n="selectHotel">اختر الفندق</option>
+                <option value="verta" data-i18n="vertaName">فندق فيرتا المحبس</option>
+                <option value="rafahya" data-i18n="rafahyaName">فندق رفاهية الكرام</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="arrival" data-i18n="arrivalLabel">تاريخ الوصول</label>
+              <input id="arrival" name="arrival" type="date" required />
+            </div>
+            <div class="field">
+              <label for="departure" data-i18n="departureLabel">تاريخ المغادرة</label>
+              <input id="departure" name="departure" type="date" required />
+            </div>
+            <div class="field">
+              <label for="rooms" data-i18n="roomsLabel">عدد الغرف</label>
+              <input id="rooms" name="rooms" type="number" min="1" value="1" required />
+            </div>
+            <div class="field">
+              <label for="guests" data-i18n="guestsLabel">عدد الأشخاص</label>
+              <input id="guests" name="guests" type="number" min="1" value="2" required />
+            </div>
+            <div class="field">
+              <label for="guest-name" data-i18n="nameLabel">الاسم</label>
+              <input id="guest-name" name="name" type="text" autocomplete="name" required data-i18n-placeholder="namePlaceholder" placeholder="الاسم الكامل" />
+            </div>
+            <div class="field">
+              <label for="phone" data-i18n="phoneLabel">رقم الهاتف</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required dir="ltr" data-i18n-placeholder="phonePlaceholder" placeholder="+966" />
+            </div>
+            <div class="field field-full">
+              <label for="notes" data-i18n="notesLabel">ملاحظات</label>
+              <textarea id="notes" name="notes" rows="3" data-i18n-placeholder="notesPlaceholder" placeholder="نوع الغرفة أو أي طلب إضافي"></textarea>
+            </div>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+            <button class="button field-full form-submit" type="submit">
+              <span data-i18n="sendWhatsapp">إرسال الطلب عبر واتساب</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand brand-light" href="#top">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 56 56"><path d="M10 39V21l18-10 18 10v18M18 39V25l10-6 10 6v14M7 44h42" /></svg>
+            </span>
+            <span class="brand-copy"><strong>رحلة الراحة</strong><small>RIHLAT AL RAHA</small></span>
+          </a>
+          <p data-i18n="footerIntro">حلول فنادق وضيافة ونقل لرحلة أكثر راحة.</p>
+        </div>
+        <div>
+          <h2 data-i18n="contactTitle">تواصل معنا</h2>
+          <ul class="footer-list">
+            <li><a href="tel:+966509530219" dir="ltr">+966 50 953 0219</a></li>
+            <li><a href="tel:+966574705030" dir="ltr">+966 57 470 5030</a></li>
+            <li><a href="tel:+905302600126" dir="ltr">+90 530 260 0126</a></li>
+            <li><a href="mailto:rahlaalraha@gmail.com">rahlaalraha@gmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="followTitle">تابعنا</h2>
+          <div class="social-links">
+            <a href="https://www.instagram.com/rahlaalraha" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://snapchat.com/t/jAqYkGsy" target="_blank" rel="noopener">Snapchat</a>
+            <a href="https://www.tiktok.com/@rahlaalraha" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://x.com/rahlaalraha" target="_blank" rel="noopener">X</a>
+            <a href="https://www.facebook.com/share/19iVYPbXZr/" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.linkedin.com/in/rahla-alraha-991852435" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p><span data-i18n="legalName">شركة رحلة الراحة للاستثمار</span> · <span data-i18n="crLabel">السجل التجاري</span> <span dir="ltr">7052180283</span> · <span data-i18n="vatLabel">الرقم الضريبي</span> <span dir="ltr">314325535500003</span></p>
+        <p>© <span id="year">2026</span> <span data-i18n="rights">جميع الحقوق محفوظة</span></p>
+      </div>
+    </footer>
+
+    <a class="floating-whatsapp" href="https://wa.me/966509530219" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <span aria-hidden="true">✦</span>
+      <span data-i18n="whatsapp">واتساب</span>
+    </a>
+  </body>
+</html>
