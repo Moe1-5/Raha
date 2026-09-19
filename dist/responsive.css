@@ -1,5 +1,8 @@
 /* Mobile-first layout layer */
 html { scroll-padding-top: 112px; }
+.svg-symbols {
+  position: absolute; width: 0; height: 0; overflow: hidden;
+}
 .container { width: min(calc(100% - 28px), var(--container)); }
 .section { padding: 64px 0; }
 .utility-inner { min-height: 40px; }
@@ -25,6 +28,9 @@ html { scroll-padding-top: 112px; }
   display: inline-flex; align-items: center; justify-content: center; text-align: center; line-height: 1.25;
 }
 .button { min-height: 52px; padding-block: 12px; }
+.whatsapp-mark {
+  display: block; width: 20px; height: 20px; flex: 0 0 20px; fill: currentColor;
+}
 .hero { min-height: 0; padding-top: 54px; background: linear-gradient(180deg, var(--porcelain) 0 54%, #f3e7d5 54%); }
 .hero-grid, .section-heading, .offer-layout, .about-grid, .reservation-layout, .footer-grid {
   display: grid; grid-template-columns: minmax(0, 1fr);
@@ -94,21 +100,20 @@ h2 { font-size: clamp(2rem, 9vw, 3rem); }
 .social-links { display: grid; grid-template-columns: repeat(3, 46px); gap: 9px; direction: ltr; }
 .social-links a {
   width: 46px; height: 46px; padding: 0; border: 1px solid rgba(225,187,128,.34);
-  border-radius: 13px; background: rgba(255,255,255,.035); color: #f4ecdf;
+  border-radius: 13px; background: rgba(255,255,255,.035); color: #f4ecdf; line-height: 0;
 }
 .social-links a:hover { background: var(--fawn); color: var(--coffee-deep); }
 .social-links svg {
-  width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8;
+  display: block; width: 21px; height: 21px; flex: 0 0 21px;
+  fill: none; stroke: currentColor; stroke-width: 1.8;
   stroke-linecap: round; stroke-linejoin: round;
 }
 .social-links .icon-fill { fill: currentColor; stroke: none; }
 .footer-bottom { flex-direction: column; gap: 10px; }
 .floating-whatsapp { width: 54px; height: 54px; padding: 0; border-radius: 17px; }
-.floating-whatsapp svg {
-  width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.8;
-  stroke-linecap: round; stroke-linejoin: round;
-}
+.floating-whatsapp .whatsapp-mark { width: 26px; height: 26px; flex-basis: 26px; }
 .floating-whatsapp > span { display: none; }
+.field textarea { resize: none; }
 @media (min-width: 420px) {
   .card-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .social-links { grid-template-columns: repeat(6, 46px); }

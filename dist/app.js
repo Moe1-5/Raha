@@ -89,6 +89,7 @@ function applyLanguage(language) {
   });
   heroPoster.src = language === "tr" ? "./assets/promo_tyr.jpeg" : "./assets/promo.jpeg";
   heroPoster.alt = language === "tr" ? "Rafahya Al Karam Hotel Eylül kampanyası" : language === "en" ? "Arabic National Day hotel offer" : "عرض اليوم الوطني لفندق فيرتا المحبس";
+  updateDirectWhatsAppLinks(language);
   localStorage.setItem("rihlat-language", language);
 }
 
@@ -106,12 +107,6 @@ navigation.querySelectorAll("a").forEach((link) => link.addEventListener("click"
   document.body.classList.remove("menu-open");
 }));
 
-document.querySelectorAll(".choose-hotel").forEach((button) => button.addEventListener("click", () => {
-  form.elements.hotel.value = button.dataset.hotel;
-  document.querySelector("#reservation").scrollIntoView({ behavior: "smooth" });
-  window.setTimeout(() => form.elements.arrival.focus(), 450);
-}));
-
 const today = new Date().toISOString().split("T")[0];
 form.elements.arrival.min = today;
 form.elements.departure.min = today;
@@ -124,6 +119,30 @@ function hotelName(value, language) {
   if (value === "verta") return translations[language].vertaName;
   if (value === "rafahya") return translations[language].rafahyaName;
   return value;
+}
+
+function directWhatsAppMessage(language, hotelKey) {
+  const hotel = hotelKey ? hotelName(hotelKey, language) : "";
+  if (language === "tr") {
+    return hotel
+      ? `Merhaba, ${hotel} için rezervasyon hakkında bilgi almak istiyorum.`
+      : "Merhaba, otel rezervasyonu hakkında bilgi almak istiyorum.";
+  }
+  if (language === "en") {
+    return hotel
+      ? `Hello, I would like to ask about a reservation at ${hotel}.`
+      : "Hello, I would like to ask about a hotel reservation.";
+  }
+  return hotel
+    ? `السلام عليكم، أرغب في الاستفسار عن حجز في ${hotel}.`
+    : "السلام عليكم، أرغب في الاستفسار عن حجز فندق.";
+}
+
+function updateDirectWhatsAppLinks(language) {
+  document.querySelectorAll("[data-whatsapp-direct]").forEach((link) => {
+    const message = directWhatsAppMessage(language, link.dataset.hotel);
+    link.href = `https://wa.me/966509530219?text=${encodeURIComponent(message)}`;
+  });
 }
 
 function validateForm() {
