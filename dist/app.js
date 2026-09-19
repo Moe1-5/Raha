@@ -195,5 +195,13 @@ function registerWebMcpTool() {
 }
 
 document.querySelector("#year").textContent = String(new Date().getFullYear());
+document.querySelectorAll(".hotel-media img, .poster-frame img, .offer-poster img").forEach((image) => {
+  const applyOrientation = () => {
+    const frame = image.closest(".hotel-media, .poster-frame, .offer-poster");
+    frame?.classList.toggle("is-landscape", image.naturalWidth > image.naturalHeight);
+  };
+  if (image.complete) applyOrientation();
+  else image.addEventListener("load", applyOrientation, { once: true });
+});
 applyLanguage(localStorage.getItem("rihlat-language") || "ar");
 registerWebMcpTool();
