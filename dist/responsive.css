@@ -1,8 +1,5 @@
 /* Mobile-first layout layer */
 html { scroll-padding-top: 112px; }
-.svg-symbols {
-  position: absolute; width: 0; height: 0; overflow: hidden;
-}
 .container { width: min(calc(100% - 28px), var(--container)); }
 .section { padding: 64px 0; }
 .utility-inner { min-height: 40px; }
@@ -11,7 +8,8 @@ html { scroll-padding-top: 112px; }
 .header-inner { min-height: 70px; gap: 12px; }
 .brand-mark { width: 42px; height: 42px; border-radius: 13px; }
 .brand-mark svg { width: 31px; height: 31px; }
-.brand-copy strong { font-size: 1rem; }
+.brand-copy { line-height: 1.25; }
+.brand-copy strong { font-size: 1rem; line-height: 1.25; }
 .brand-copy small { font-size: .56rem; }
 .menu-toggle { display: block; order: -1; }
 .header-cta { display: none; }
@@ -25,25 +23,35 @@ html { scroll-padding-top: 112px; }
 .primary-nav a { display: flex; align-items: center; min-height: 46px; padding: 9px 12px; border-radius: 10px; }
 .primary-nav a:hover { background: var(--fawn-soft); }
 .button, .text-link, .text-button, .map-link, .language-button, .floating-whatsapp, .social-links a {
-  display: inline-flex; align-items: center; justify-content: center; text-align: center; line-height: 1.25;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center; line-height: 1.45;
 }
-.button { min-height: 52px; padding-block: 12px; }
-.whatsapp-mark {
-  display: block; width: 20px; height: 20px; flex: 0 0 20px; fill: currentColor;
+.button { min-height: 54px; padding-block: 12px; white-space: normal; }
+.bi {
+  display: inline-grid; place-items: center; flex: 0 0 auto; line-height: 1;
+  font-size: 1.1em; vertical-align: -.08em;
 }
 .hero { min-height: 0; padding-top: 54px; background: linear-gradient(180deg, var(--porcelain) 0 54%, #f3e7d5 54%); }
 .hero-grid, .section-heading, .offer-layout, .about-grid, .reservation-layout, .footer-grid {
   display: grid; grid-template-columns: minmax(0, 1fr);
 }
 .hero-grid { gap: 44px; }
-h1 { font-size: clamp(2.65rem, 14vw, 4.4rem); line-height: 1.06; }
-h2 { font-size: clamp(2rem, 9vw, 3rem); }
+h1 { font-size: clamp(2.35rem, 11.5vw, 3.8rem); line-height: 1.24; letter-spacing: -.02em; }
+h2 { font-size: clamp(1.85rem, 8vw, 2.75rem); line-height: 1.32; letter-spacing: -.015em; }
+h3 { line-height: 1.4; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  line-height: 1.42; letter-spacing: 0; text-wrap: pretty;
+}
+.hero-copy, .section-heading > *, .offer-copy, .reservation-intro, .hotel-content { min-width: 0; }
+.hero-lede, .section-heading p, .offer-copy p, .about-copy p, .reservation-intro p {
+  line-height: 1.85; overflow-wrap: anywhere;
+}
 .hero-lede { font-size: 1rem; }
 .hero-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
 .hero-actions > * { width: 100%; min-height: 52px; }
 .text-link { border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.65); }
 .trust-list { flex-direction: column; align-items: stretch; gap: 9px; }
-.trust-list li { min-height: 48px; }
+.trust-list li { min-height: 48px; line-height: 1.45; }
+.trust-list span .bi { font-size: .88rem; }
 .hero-visual { width: min(100%, 430px); justify-self: center; }
 .journey-line { display: none; }
 .poster-frame { padding: 9px; border-radius: 24px; transform: none; }
@@ -52,7 +60,11 @@ h2 { font-size: clamp(2rem, 9vw, 3rem); }
   width: 100%; height: min(76vh, 640px); aspect-ratio: auto; object-fit: contain;
   border-radius: 17px; background: var(--teal);
 }
-.poster-caption { inset-inline: 20px; bottom: 20px; }
+.poster-caption {
+  inset-inline: 20px; bottom: 20px; align-items: flex-start; flex-wrap: wrap;
+  line-height: 1.5;
+}
+.poster-caption span, .poster-caption strong { line-height: 1.5; overflow-wrap: anywhere; }
 .section-heading { gap: 8px; margin-bottom: 30px; }
 .hotel-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 .hotel-media {
@@ -75,7 +87,7 @@ h2 { font-size: clamp(2rem, 9vw, 3rem); }
 .card-actions > * {
   width: 100%; min-height: 46px; padding: 9px 10px; border: 1px solid var(--line);
   border-radius: 999px; background: var(--paper); color: var(--coffee); font-size: .8rem;
-  font-weight: 900; text-decoration: none;
+  font-weight: 900; line-height: 1.45; text-decoration: none; white-space: normal;
 }
 .card-actions > *:hover { background: var(--fawn-soft); color: var(--coffee); }
 .offer-layout { gap: 36px; }
@@ -92,6 +104,9 @@ h2 { font-size: clamp(2rem, 9vw, 3rem); }
 .service-grid article > span { margin-bottom: 16px; }
 .reservation-layout { gap: 30px; }
 .reservation-intro { position: static; }
+.reservation-note { align-items: flex-start; }
+.reservation-note > span { display: grid; place-items: center; flex: 0 0 32px; min-height: 32px; }
+.reservation-note p { min-width: 0; line-height: 1.75; overflow-wrap: anywhere; }
 .reservation-form { grid-template-columns: minmax(0, 1fr); gap: 15px; padding: 20px; }
 .field { grid-column: 1 / -1; }
 .field input, .field select, .field textarea { min-height: 54px; font-size: 16px; }
@@ -103,17 +118,18 @@ h2 { font-size: clamp(2rem, 9vw, 3rem); }
   border-radius: 13px; background: rgba(255,255,255,.035); color: #f4ecdf; line-height: 0;
 }
 .social-links a:hover { background: var(--fawn); color: var(--coffee-deep); }
-.social-links svg {
-  display: block; width: 21px; height: 21px; flex: 0 0 21px;
-  fill: none; stroke: currentColor; stroke-width: 1.8;
-  stroke-linecap: round; stroke-linejoin: round;
-}
-.social-links .icon-fill { fill: currentColor; stroke: none; }
+.social-links .bi { font-size: 1.25rem; }
 .footer-bottom { flex-direction: column; gap: 10px; }
 .floating-whatsapp { width: 54px; height: 54px; padding: 0; border-radius: 17px; }
-.floating-whatsapp .whatsapp-mark { width: 26px; height: 26px; flex-basis: 26px; }
+.floating-whatsapp .bi { font-size: 1.55rem; }
 .floating-whatsapp > span { display: none; }
 .field textarea { resize: none; }
+@media (max-width: 359px) {
+  h1 { font-size: 2.15rem; }
+  h2 { font-size: 1.75rem; }
+  .campaign-kicker { max-width: 100%; line-height: 1.45; }
+  .hotel-content, .reservation-form { padding-inline: 16px; }
+}
 @media (min-width: 420px) {
   .card-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .social-links { grid-template-columns: repeat(6, 46px); }
