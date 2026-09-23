@@ -36,7 +36,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const copy = useMemo(() => getCopy(language), [language]);
   const directWhatsapp = whatsappUrl(directMessage(language));
-  const heroPoster = language === "tr" ? "/assets/promo_tyr.jpeg" : "/assets/promo.jpeg";
+  const heroPoster = language === "tr" ? "/assets/rafahya-alkaram-tr.png" : "/assets/promo.jpeg";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -51,8 +51,8 @@ function App() {
   }, [language]);
 
   const hotelImages = {
-    verta: language === "tr" ? "/assets/promo_tyr.jpeg" : "/assets/promo.jpeg",
-    rafahya: language === "tr" ? "/assets/promo-tyr-3.jpeg" : "/assets/promo-3.jpeg"
+    verta: language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo.jpeg",
+    rafahya: language === "tr" ? "/assets/rafahya-alkaram-tr.png" : "/assets/promo-3.jpeg"
   };
 
   return (
@@ -127,7 +127,7 @@ function App() {
                   width="1080"
                   height="1440"
                 />
-                <figcaption className="absolute inset-x-5 bottom-5 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/25 bg-coffee-deep/90 px-4 py-3 text-white backdrop-blur">
+                <figcaption className={`${language === "tr" ? "mt-2" : "absolute inset-x-5 bottom-5"} flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/25 bg-coffee-deep/90 px-4 py-3 text-white backdrop-blur`}>
                   <span className="text-xs leading-5 text-white/70">{copy.limitedOffer}</span>
                   <strong className="text-sm leading-6">{copy.septemberOffer}</strong>
                 </figcaption>
@@ -204,7 +204,7 @@ function App() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {(language === "tr"
-                ? ["/assets/promo-tyr-2.jpeg", "/assets/promo-tyr-4.jpeg"]
+                ? ["/assets/rafahya-alkaram-tr.png", "/assets/verta-karim-tr.png"]
                 : ["/assets/promo-3.jpeg", "/assets/promo.jpeg"]
               ).map((image, index) => (
                 <figure
