@@ -24,7 +24,7 @@ const maps = {
   verta:
     "https://www.google.com/maps?q=Verta+Hotel+Mahbas%2C+Mahbas+jin%2C+Alaziziyyah%2C+Makkah+24235&ftid=0x15c20591f74560dd:0x76b2c4bc6eaf53ef",
   rafahya:
-    "https://maps.app.goo.gl/12CX4Q9jC3kXijEw6",
+    "https://maps.app.goo.gl/BmHga3nZ9fpf2VYb6",
   mirage:
     "https://www.google.com/maps?q=Meraj+Hotel+Taiba%2C+Madinah+42311&ftid=0x15bdbfaeb180d789:0x50cdb4833d80e78b"
 } satisfies Record<HotelKey, string>;
