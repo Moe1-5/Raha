@@ -36,7 +36,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const copy = useMemo(() => getCopy(language), [language]);
   const directWhatsapp = whatsappUrl(directMessage(language));
-  const heroPoster = language === "tr" ? "/assets/rafahya-alkaram-tr.png" : "/assets/promo.jpeg";
+  const heroPoster = language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo.jpeg";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -51,8 +51,8 @@ function App() {
   }, [language]);
 
   const hotelImages = {
-    verta: language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo.jpeg",
-    rafahya: language === "tr" ? "/assets/rafahya-alkaram-tr.png" : "/assets/promo-3.jpeg"
+    verta: "/assets/promo.jpeg",
+    rafahya: language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo-3.jpeg"
   };
 
   return (
@@ -163,7 +163,7 @@ function App() {
               <HotelCard
                 hotel="rafahya"
                 image={hotelImages.rafahya}
-                city={copy.makkah}
+                city={language === "tr" ? "Mahbes Bölgesi" : copy.makkah}
                 label={copy.featuredHotel}
                 name={copy.rafahyaName}
                 description={copy.rafahyaDescription}
@@ -204,7 +204,7 @@ function App() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {(language === "tr"
-                ? ["/assets/rafahya-alkaram-tr.png", "/assets/verta-karim-tr.png"]
+                ? ["/assets/promo.jpeg", "/assets/verta-karim-tr.png"]
                 : ["/assets/promo-3.jpeg", "/assets/promo.jpeg"]
               ).map((image, index) => (
                 <figure
