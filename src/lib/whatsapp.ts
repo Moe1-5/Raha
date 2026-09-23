@@ -1,6 +1,6 @@
 import { getCopy, type Language } from "../i18n";
 
-export type HotelKey = "verta" | "rafahya";
+export type HotelKey = "verta" | "rafahya" | "mirage";
 
 export interface ReservationValues {
   hotel: HotelKey;
@@ -18,7 +18,9 @@ export const whatsappNumber = (configuredNumber || "966509530219").replace(/\D/g
 
 export function hotelName(hotel: HotelKey, language: Language) {
   const copy = getCopy(language);
-  return hotel === "verta" ? copy.vertaName : copy.rafahyaName;
+  if (hotel === "verta") return copy.vertaName;
+  if (hotel === "mirage") return copy.mirageName;
+  return copy.rafahyaName;
 }
 
 export function directMessage(language: Language, hotel?: HotelKey) {

@@ -24,7 +24,9 @@ const maps = {
   verta:
     "https://www.google.com/maps?q=Verta+Hotel+Mahbas&ftid=0x15c20591f74560dd:0x76b2c4bc6eaf53ef",
   rafahya:
-    "https://maps.app.goo.gl/12CX4Q9jC3kXijEw6"
+    "https://maps.app.goo.gl/12CX4Q9jC3kXijEw6",
+  mirage:
+    "https://www.google.com/maps/search/?api=1&query=24.46452%2C39.6164"
 } satisfies Record<HotelKey, string>;
 
 function initialLanguage(): Language {
@@ -36,7 +38,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const copy = useMemo(() => getCopy(language), [language]);
   const directWhatsapp = whatsappUrl(directMessage(language));
-  const heroPoster = language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo.jpeg";
+  const heroPoster = language === "tr" ? "/assets/rafahiya-alkaram-hero-tr.png" : "/assets/promo.jpeg";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -45,14 +47,14 @@ function App() {
       language === "ar"
         ? "رحلة الراحة | حجز فنادق مكة"
         : language === "tr"
-          ? "Rihlat Al Raha | Mekke Otelleri"
+          ? "Rihlat Al Raha | Mekke ve Medine Otelleri"
           : "Rihlat Al Raha | Makkah Hotels";
     localStorage.setItem("rihlat-language", language);
   }, [language]);
 
   const hotelImages = {
-    verta: "/assets/promo.jpeg",
-    rafahya: language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo-3.jpeg"
+    verta: language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo.jpeg",
+    rafahya: language === "tr" ? "/assets/promo-tyr-3.jpeg" : "/assets/promo-3.jpeg"
   };
 
   return (
@@ -161,17 +163,17 @@ function App() {
                 mapHref={maps.verta}
               />
               <HotelCard
-                hotel="rafahya"
+                hotel={language === "tr" ? "mirage" : "rafahya"}
                 image={hotelImages.rafahya}
-                city={language === "tr" ? "Mahbes Bölgesi" : copy.makkah}
+                city={language === "tr" ? "Medine" : copy.makkah}
                 label={copy.featuredHotel}
-                name={copy.rafahyaName}
-                description={copy.rafahyaDescription}
+                name={language === "tr" ? copy.mirageName : copy.rafahyaName}
+                description={language === "tr" ? copy.mirageDescription : copy.rafahyaDescription}
                 amenities={[copy.restaurant, copy.breakfast, copy.service24]}
                 whatsappLabel={copy.chooseHotel}
-                whatsappHref={whatsappUrl(directMessage(language, "rafahya"))}
+                whatsappHref={whatsappUrl(directMessage(language, language === "tr" ? "mirage" : "rafahya"))}
                 mapLabel={copy.viewMap}
-                mapHref={maps.rafahya}
+                mapHref={language === "tr" ? maps.mirage : maps.rafahya}
               />
             </div>
           </div>
@@ -204,7 +206,7 @@ function App() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {(language === "tr"
-                ? ["/assets/promo.jpeg", "/assets/verta-karim-tr.png"]
+                ? ["/assets/rafahiya-alkaram-hero-tr.png", "/assets/promo-tyr-2.jpeg"]
                 : ["/assets/promo-3.jpeg", "/assets/promo.jpeg"]
               ).map((image, index) => (
                 <figure

@@ -35,7 +35,7 @@ export function ReservationForm({ language, copy }: ReservationFormProps) {
 
     const valid =
       form.checkValidity() &&
-      (values.hotel === "verta" || values.hotel === "rafahya") &&
+      (values.hotel === "verta" || values.hotel === (language === "tr" ? "mirage" : "rafahya")) &&
       Boolean(values.arrival && values.departure) &&
       values.departure > values.arrival;
 
@@ -80,7 +80,11 @@ export function ReservationForm({ language, copy }: ReservationFormProps) {
               {copy.selectHotel}
             </option>
             <option value="verta">{copy.vertaName}</option>
-            <option value="rafahya">{copy.rafahyaName}</option>
+            {language === "tr" ? (
+              <option value="mirage">{copy.mirageName}</option>
+            ) : (
+              <option value="rafahya">{copy.rafahyaName}</option>
+            )}
           </select>
         </label>
 
