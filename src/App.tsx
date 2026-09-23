@@ -22,11 +22,11 @@ import { directMessage, type HotelKey, whatsappUrl } from "./lib/whatsapp";
 
 const maps = {
   verta:
-    "https://www.google.com/maps?q=Verta+Hotel+Mahbas&ftid=0x15c20591f74560dd:0x76b2c4bc6eaf53ef",
+    "https://www.google.com/maps?q=Verta+Hotel+Mahbas%2C+Mahbas+jin%2C+Alaziziyyah%2C+Makkah+24235&ftid=0x15c20591f74560dd:0x76b2c4bc6eaf53ef",
   rafahya:
     "https://maps.app.goo.gl/12CX4Q9jC3kXijEw6",
   mirage:
-    "https://www.google.com/maps/search/?api=1&query=24.46452%2C39.6164"
+    "https://www.google.com/maps?q=Meraj+Hotel+Taiba%2C+Madinah+42311&ftid=0x15bdbfaeb180d789:0x50cdb4833d80e78b"
 } satisfies Record<HotelKey, string>;
 
 function initialLanguage(): Language {
@@ -38,7 +38,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const copy = useMemo(() => getCopy(language), [language]);
   const directWhatsapp = whatsappUrl(directMessage(language));
-  const heroPoster = language === "tr" ? "/assets/rafahiya-alkaram-hero-tr.png" : "/assets/promo.jpeg";
+  const heroPoster = language === "tr" ? "/assets/rafahya-alkaram-tr.png" : "/assets/promo.jpeg";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -152,11 +152,13 @@ function App() {
               <HotelCard
                 hotel="verta"
                 image={hotelImages.verta}
-                city={copy.makkah}
+                city={language === "tr" ? "Mahbes Bölgesi" : copy.makkah}
                 label={copy.featuredHotel}
                 name={copy.vertaName}
                 description={copy.vertaDescription}
-                amenities={[copy.breakfast, copy.haramTransfer, copy.service24]}
+                amenities={language === "tr"
+                  ? [copy.restaurant, copy.breakfast, copy.service24]
+                  : [copy.breakfast, copy.haramTransfer, copy.service24]}
                 whatsappLabel={copy.chooseHotel}
                 whatsappHref={whatsappUrl(directMessage(language, "verta"))}
                 mapLabel={copy.viewMap}
@@ -206,7 +208,7 @@ function App() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {(language === "tr"
-                ? ["/assets/rafahiya-alkaram-hero-tr.png", "/assets/promo-tyr-2.jpeg"]
+                ? ["/assets/rafahya-alkaram-tr.png", "/assets/promo-tyr-2.jpeg"]
                 : ["/assets/promo-3.jpeg", "/assets/promo.jpeg"]
               ).map((image, index) => (
                 <figure
