@@ -24,7 +24,7 @@ const maps = {
   verta:
     "https://www.google.com/maps?q=Verta+Hotel+Mahbas&ftid=0x15c20591f74560dd:0x76b2c4bc6eaf53ef",
   rafahya:
-    "https://www.google.com/maps?q=Rafahya+Al+Karam+Hotel&ftid=0x15c20534479baa97:0x14023e0b25021155"
+    "https://maps.app.goo.gl/12CX4Q9jC3kXijEw6"
 } satisfies Record<HotelKey, string>;
 
 function initialLanguage(): Language {
