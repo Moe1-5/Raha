@@ -38,7 +38,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const copy = useMemo(() => getCopy(language), [language]);
   const directWhatsapp = whatsappUrl(directMessage(language));
-  const heroPoster = language === "tr" ? "/assets/rafahya-alkaram-tr.png" : "/assets/promo.jpeg";
+  const heroPoster = language === "tr" ? "/assets/rafahiya-alkaram-hero-tr.png" : "/assets/promo.jpeg";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -208,7 +208,7 @@ function App() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {(language === "tr"
-                ? ["/assets/rafahya-alkaram-tr.png", "/assets/promo-tyr-2.jpeg"]
+                ? ["/assets/rafahiya-alkaram-hero-tr.png", "/assets/promo-tyr-2.jpeg"]
                 : ["/assets/promo-3.jpeg", "/assets/promo.jpeg"]
               ).map((image, index) => (
                 <figure
