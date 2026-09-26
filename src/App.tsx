@@ -15,6 +15,7 @@ import { SiWhatsapp } from "react-icons/si";
 import { Brand } from "./components/Brand";
 import { Header } from "./components/Header";
 import { HotelCard } from "./components/HotelCard";
+import { HotelHighlights, MadinahHotels, ServicesInPictures } from "./components/MarketingSections";
 import { ReservationForm } from "./components/ReservationForm";
 import { SocialLinks } from "./components/SocialLinks";
 import { getCopy, type Language } from "./i18n";
@@ -27,7 +28,7 @@ const maps = {
     "https://maps.app.goo.gl/BmHga3nZ9fpf2VYb6",
   mirage:
     "https://www.google.com/maps?q=Meraj+Hotel+Taiba%2C+Madinah+42311&ftid=0x15bdbfaeb180d789:0x50cdb4833d80e78b"
-} satisfies Record<HotelKey, string>;
+} satisfies Partial<Record<HotelKey, string>>;
 
 function initialLanguage(): Language {
   const stored = localStorage.getItem("rihlat-language");
@@ -181,6 +182,9 @@ function App() {
           </div>
         </section>
 
+        <HotelHighlights language={language} copy={copy} />
+        <MadinahHotels language={language} copy={copy} />
+
         <section id="offers" className="relative scroll-mt-28 overflow-hidden bg-teal py-16 text-white sm:py-24">
           <div className="absolute -bottom-36 -end-12 text-[20rem] font-black leading-none text-white/[0.035]" aria-hidden="true">
             96
@@ -261,6 +265,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <ServicesInPictures language={language} copy={copy} />
 
         <section id="reservation" className="scroll-mt-28 bg-paper py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

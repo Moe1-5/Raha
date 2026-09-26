@@ -1,6 +1,6 @@
 import { getCopy, type Language } from "../i18n";
 
-export type HotelKey = "verta" | "rafahya" | "mirage";
+export type HotelKey = "verta" | "rafahya" | "mirage" | "diwan" | "arjwan" | "abraj";
 
 export interface ReservationValues {
   hotel: HotelKey;
@@ -20,6 +20,9 @@ export function hotelName(hotel: HotelKey, language: Language) {
   const copy = getCopy(language);
   if (hotel === "verta") return copy.vertaName;
   if (hotel === "mirage") return copy.mirageName;
+  if (hotel === "diwan") return copy.diwanName;
+  if (hotel === "arjwan") return copy.arjwanName;
+  if (hotel === "abraj") return copy.abrajName;
   return copy.rafahyaName;
 }
 

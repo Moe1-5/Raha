@@ -33,9 +33,10 @@ export function ReservationForm({ language, copy }: ReservationFormProps) {
       notes: String(data.get("notes") || "")
     };
 
+    const validHotels: HotelKey[] = ["verta", "rafahya", "mirage", "diwan", "arjwan", "abraj"];
     const valid =
       form.checkValidity() &&
-      (values.hotel === "verta" || values.hotel === (language === "tr" ? "mirage" : "rafahya")) &&
+      validHotels.includes(values.hotel) &&
       Boolean(values.arrival && values.departure) &&
       values.departure > values.arrival;
 
@@ -80,11 +81,11 @@ export function ReservationForm({ language, copy }: ReservationFormProps) {
               {copy.selectHotel}
             </option>
             <option value="verta">{copy.vertaName}</option>
-            {language === "tr" ? (
-              <option value="mirage">{copy.mirageName}</option>
-            ) : (
-              <option value="rafahya">{copy.rafahyaName}</option>
-            )}
+            <option value="rafahya">{copy.rafahyaName}</option>
+            <option value="mirage">{copy.mirageName}</option>
+            <option value="diwan">{copy.diwanName}</option>
+            <option value="arjwan">{copy.arjwanName}</option>
+            <option value="abraj">{copy.abrajName}</option>
           </select>
         </label>
 
