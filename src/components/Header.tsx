@@ -30,10 +30,7 @@ export function Header({ language, onLanguageChange, copy }: HeaderProps) {
   return (
     <>
       <div className="border-b border-white/10 bg-coffee-deep text-white">
-        <div className="mx-auto flex min-h-10 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <a className="text-xs font-bold tracking-wide hover:text-fawn" href="tel:+966509530219" dir="ltr">
-            +966 50 953 0219
-          </a>
+        <div className="mx-auto flex min-h-10 max-w-7xl items-center justify-end gap-4 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1" role="group" aria-label="Language">
             {languages.map((item) => {
               const active = language === item.code;
