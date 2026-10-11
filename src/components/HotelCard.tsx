@@ -31,11 +31,11 @@ export function HotelCard({
 }: HotelCardProps) {
   return (
     <article className="group overflow-hidden rounded-4xl border border-coffee/10 bg-porcelain transition duration-300 hover:-translate-y-1 hover:shadow-card">
-      <div className="relative grid aspect-[4/5] max-h-[34rem] place-items-center overflow-hidden bg-gradient-to-br from-teal to-teal-deep p-3 sm:aspect-[5/4]">
+      <div className="relative aspect-[4/5] max-h-[34rem] overflow-hidden sm:aspect-[5/4]">
         <img
           src={image}
           alt={name}
-          className="h-full w-full rounded-3xl object-contain"
+          className="absolute inset-0 h-full w-full object-cover object-top"
           loading="lazy"
           width="1080"
           height="1440"

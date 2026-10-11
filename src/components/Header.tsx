@@ -22,7 +22,7 @@ export function Header({ language, onLanguageChange, copy }: HeaderProps) {
   const navItems = [
     ["#top", copy.navHome],
     ["#hotels", copy.navHotels],
-    ["#offers", copy.navOffers],
+    ...(language === "tr" ? [["#travel-services", "Uçuş & otobüs"]] : []),
     ["#about", copy.navAbout],
     ["#contact", copy.navContact]
   ];

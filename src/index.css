@@ -100,6 +100,17 @@
   mask-image: linear-gradient(to top, #000, transparent 82%);
 }
 
+/* Keep localized hero actions inside their column without resizing the site. */
+.hero-actions > a {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.hero-actions > a > svg {
+  flex-shrink: 0;
+}
+
 [dir="rtl"] .font-display {
   font-family: Cairo, Arial, sans-serif;
 }

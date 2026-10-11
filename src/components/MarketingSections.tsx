@@ -1,7 +1,7 @@
 import { HandHeart, BusFront, ExternalLink, MapPin } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import type { Copy, Language } from "../i18n";
-import { directMessage, type HotelKey, whatsappUrl } from "../lib/whatsapp";
+import { directMessage, type HotelKey, travelWhatsappUrl, whatsappUrl } from "../lib/whatsapp";
 
 interface MarketingProps {
   language: Language;
@@ -184,7 +184,7 @@ export function MadinahHotels({ language, copy }: MarketingProps) {
 export function ServicesInPictures({ language }: MarketingProps) {
   const t = marketing[language];
   return (
-    <section className="bg-paper py-16 sm:py-24">
+    <section id="services-in-pictures" className="bg-paper py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="eyebrow">{t.photoServicesEyebrow}</p>
         <h2 className="section-title">{t.photoServicesTitle}</h2>
@@ -201,7 +201,7 @@ export function ServicesInPictures({ language }: MarketingProps) {
             <div className="p-5 sm:p-7">
               <h3 className="flex items-center gap-2 font-display text-xl font-black text-coffee-deep"><BusFront size={21} className="shrink-0" aria-hidden="true" />{t.transportTitle}</h3>
               <p className="mt-2 text-sm leading-7 text-coffee/65">{t.transportBody}</p>
-              <a href={whatsappUrl(t.transportMessage)} target="_blank" rel="noopener noreferrer" className="primary-button mt-5 bg-[#196b51] hover:bg-[#125540]"><SiWhatsapp className="shrink-0 text-lg" aria-hidden="true" />{t.askTransport}</a>
+              <a href={travelWhatsappUrl(t.transportMessage)} target="_blank" rel="noopener noreferrer" className="primary-button mt-5 bg-[#196b51] hover:bg-[#125540]"><SiWhatsapp className="shrink-0 text-lg" aria-hidden="true" />{t.askTransport}</a>
             </div>
           </article>
         </div>

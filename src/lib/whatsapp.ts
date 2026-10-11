@@ -91,3 +91,8 @@ Notes: ${notes}`;
 export function whatsappUrl(message: string) {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
+
+export const travelWhatsappNumber = "905547490137";
+export function travelWhatsappUrl(message: string) {
+  return `https://wa.me/${travelWhatsappNumber}?text=${encodeURIComponent(message)}`;
+}

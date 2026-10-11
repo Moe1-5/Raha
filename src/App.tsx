@@ -3,7 +3,8 @@ import {
   ArrowDown,
   BedDouble,
   BusFront,
-  Check,
+  Building2,
+  Plane,
   Clock3,
   Mail,
   Phone,
@@ -15,11 +16,13 @@ import { SiWhatsapp } from "react-icons/si";
 import { Brand } from "./components/Brand";
 import { Header } from "./components/Header";
 import { HotelCard } from "./components/HotelCard";
+import { HeroPoster, seasonCopy } from "./components/HeroPoster";
+import { TravelServices, travelHeroCopy } from "./components/TravelServices";
 import { HotelHighlights, MadinahHotels, ServicesInPictures } from "./components/MarketingSections";
 import { ReservationForm } from "./components/ReservationForm";
 import { SocialLinks } from "./components/SocialLinks";
 import { getCopy, type Language } from "./i18n";
-import { directMessage, type HotelKey, whatsappUrl } from "./lib/whatsapp";
+import { directMessage, type HotelKey, travelWhatsappUrl, whatsappUrl } from "./lib/whatsapp";
 
 const maps = {
   verta:
@@ -31,15 +34,20 @@ const maps = {
 } satisfies Partial<Record<HotelKey, string>>;
 
 function initialLanguage(): Language {
-  const stored = localStorage.getItem("rihlat-language");
-  return stored === "en" || stored === "tr" ? stored : "ar";
+  try {
+    const stored = localStorage.getItem("rihlat-language");
+    return stored === "en" || stored === "tr" ? stored : "ar";
+  } catch { return "ar"; }
 }
 
 function App() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const copy = useMemo(() => getCopy(language), [language]);
   const directWhatsapp = whatsappUrl(directMessage(language));
-  const heroPoster = language === "tr" ? "/assets/rafahiya-alkaram-hero-tr.png" : "/assets/promo.jpeg";
+  const travelHero = language === "tr";
+  const heroContact = travelHero
+    ? travelWhatsappUrl("Merhaba, grubumuz için uçuş ve otobüs organizasyonu hakkında bilgi almak istiyorum.")
+    : directWhatsapp;
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -50,12 +58,12 @@ function App() {
         : language === "tr"
           ? "Rihlat Al Raha | Mekke ve Medine Otelleri"
           : "Rihlat Al Raha | Makkah Hotels";
-    localStorage.setItem("rihlat-language", language);
+    try { localStorage.setItem("rihlat-language", language); } catch { /* Storage may be disabled. */ }
   }, [language]);
 
   const hotelImages = {
-    verta: language === "tr" ? "/assets/verta-karim-tr.png" : "/assets/promo.jpeg",
-    rafahya: language === "tr" ? "/assets/promo-tyr-3.jpeg" : "/assets/promo-3.jpeg"
+    verta: `/assets/production-posters/verta-${language === "tr" ? "tr" : "ar"}.png`,
+    rafahya: `/assets/production-posters/rafahya-${language === "tr" ? "tr" : "ar"}.png`
   };
 
   return (
@@ -67,42 +75,40 @@ function App() {
           <div className="hero-grid-pattern absolute inset-y-0 start-0 w-72 opacity-40" aria-hidden="true" />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-fawn-soft/70 lg:inset-y-0 lg:start-auto lg:end-0 lg:h-auto lg:w-[38%]" />
 
-          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-8">
+          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-20 lg:px-8">
             <div className="min-w-0">
               <div className="mb-7 inline-flex max-w-full items-center gap-2 rounded-full bg-teal px-2 py-1.5 pe-4 text-xs font-black leading-5 text-white sm:text-sm">
-                <span className="grid min-h-9 min-w-9 place-items-center rounded-full bg-campaign-green px-2" dir="ltr">
-                  96
-                </span>
-                <span>{copy.campaignKicker}</span>
+                <Building2 className="mx-2 shrink-0" size={18} aria-hidden="true" />
+                <span>{seasonCopy[language]}</span>
               </div>
 
-              <p className="eyebrow">{copy.heroEyebrow}</p>
+              <p className="eyebrow">{travelHero ? travelHeroCopy.eyebrow : copy.heroEyebrow}</p>
               <h1 className="max-w-3xl font-display text-[clamp(2.45rem,11vw,4.25rem)] font-black leading-[1.28] tracking-[-0.02em] text-coffee-deep rtl:leading-[1.45] lg:text-[clamp(4rem,6vw,5.7rem)]">
-                {copy.heroTitle}
+                {travelHero ? travelHeroCopy.title : copy.heroTitle}
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-coffee/65 sm:text-lg sm:leading-9">{copy.heroBody}</p>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-coffee/65 sm:text-lg sm:leading-9">{travelHero ? travelHeroCopy.body : copy.heroBody}</p>
 
-              <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
+              <div className="hero-actions mt-8 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
                 <a
-                  href={directWhatsapp}
+                  href={heroContact}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="primary-button bg-[#196b51] hover:bg-[#125540]"
                 >
                   <SiWhatsapp className="text-xl" aria-hidden="true" />
-                  {copy.startRequest}
+                  {travelHero ? travelHeroCopy.contact : copy.startRequest}
                 </a>
-                <a href="#hotels" className="secondary-button">
-                  {copy.exploreHotels}
+                <a href={travelHero ? "#travel-services" : "#hotels"} className="secondary-button">
+                  {travelHero ? travelHeroCopy.explore : copy.exploreHotels}
                   <ArrowDown size={18} aria-hidden="true" />
                 </a>
               </div>
 
               <ul className="mt-9 grid gap-2 sm:flex sm:flex-wrap" aria-label="Highlights">
                 {[
-                  [Clock3, copy.service24],
-                  [Wifi, copy.freeWifi],
-                  [Zap, copy.fastRequest]
+                  [travelHero ? Plane : Clock3, travelHero ? "Uçuş organizasyonu" : copy.service24],
+                  [travelHero ? BusFront : Wifi, travelHero ? "Grup ulaşımı" : copy.freeWifi],
+                  [Zap, travelHero ? "Hızlı iletişim" : copy.fastRequest]
                 ].map(([Icon, label]) => {
                   const HighlightIcon = Icon as typeof Clock3;
                   return (
@@ -120,22 +126,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[28rem]">
-              <div className="absolute -inset-3 translate-x-2 translate-y-4 rounded-4xl border-2 border-fawn" aria-hidden="true" />
-              <figure className="relative rounded-4xl bg-paper p-2.5 shadow-card sm:p-3">
-                <img
-                  src={heroPoster}
-                  alt={language === "tr" ? "Rihlat Al Raha Türkçe otel kampanyası" : "عرض فندقي من رحلة الراحة"}
-                  className="max-h-[42rem] w-full rounded-[1.55rem] bg-teal object-contain"
-                  width="1080"
-                  height="1440"
-                />
-                <figcaption className={`${language === "tr" ? "mt-2" : "absolute inset-x-5 bottom-5"} flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/25 bg-coffee-deep/90 px-4 py-3 text-white backdrop-blur`}>
-                  <span className="text-xs leading-5 text-white/70">{copy.limitedOffer}</span>
-                  <strong className="text-sm leading-6">{copy.septemberOffer}</strong>
-                </figcaption>
-              </figure>
-            </div>
+            <HeroPoster language={language} copy={copy} />
           </div>
         </section>
 
@@ -166,17 +157,17 @@ function App() {
                 mapHref={maps.verta}
               />
               <HotelCard
-                hotel={language === "tr" ? "mirage" : "rafahya"}
+                hotel="rafahya"
                 image={hotelImages.rafahya}
-                city={language === "tr" ? "Medine" : copy.makkah}
+                city={language === "tr" ? "Mahbes Bölgesi" : copy.makkah}
                 label={copy.featuredHotel}
-                name={language === "tr" ? copy.mirageName : copy.rafahyaName}
-                description={language === "tr" ? copy.mirageDescription : copy.rafahyaDescription}
+                name={copy.rafahyaName}
+                description={copy.rafahyaDescription}
                 amenities={[copy.restaurant, copy.breakfast, copy.service24]}
                 whatsappLabel={copy.chooseHotel}
-                whatsappHref={whatsappUrl(directMessage(language, language === "tr" ? "mirage" : "rafahya"))}
+                whatsappHref={whatsappUrl(directMessage(language, "rafahya"))}
                 mapLabel={copy.viewMap}
-                mapHref={language === "tr" ? maps.mirage : maps.rafahya}
+                mapHref={maps.rafahya}
               />
             </div>
           </div>
@@ -185,55 +176,7 @@ function App() {
         <HotelHighlights language={language} copy={copy} />
         <MadinahHotels language={language} copy={copy} />
 
-        <section id="offers" className="relative scroll-mt-28 overflow-hidden bg-teal py-16 text-white sm:py-24">
-          <div className="absolute -bottom-36 -end-12 text-[20rem] font-black leading-none text-white/[0.035]" aria-hidden="true">
-            96
-          </div>
-          <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-8">
-            <div>
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-fawn">{copy.offerEyebrow}</p>
-              <h2 className="font-display text-3xl font-black leading-[1.35] sm:text-5xl rtl:leading-[1.5]">{copy.offerTitle}</h2>
-              <p className="mt-5 max-w-xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">{copy.offerBody}</p>
-              <ul className="my-7 grid gap-3">
-                {[copy.renovatedStay, copy.breakfastIncluded, copy.supportAnytime].map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm font-extrabold">
-                    <span className="grid h-7 w-7 place-items-center rounded-full bg-fawn text-coffee">
-                      <Check size={15} strokeWidth={3} aria-hidden="true" />
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a href={directWhatsapp} target="_blank" rel="noopener noreferrer" className="primary-button bg-fawn text-coffee-deep hover:bg-[#edc98f]">
-                <SiWhatsapp className="text-xl" aria-hidden="true" />
-                {copy.getOffer}
-              </a>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {(language === "tr"
-                ? ["/assets/rafahiya-alkaram-hero-tr.png", "/assets/promo-tyr-2.jpeg"]
-                : ["/assets/promo-3.jpeg", "/assets/promo.jpeg"]
-              ).map((image, index) => (
-                <figure
-                  key={image}
-                  className={`grid place-items-center rounded-4xl border border-white/15 bg-white/[0.07] p-2 shadow-2xl ${
-                    index === 1 ? "sm:translate-y-8" : ""
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={copy.offerTitle}
-                    className="max-h-[38rem] w-full rounded-[1.6rem] object-contain"
-                    loading="lazy"
-                    width="1080"
-                    height="1440"
-                  />
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
+        {language === "tr" && <TravelServices />}
 
         <section id="about" className="scroll-mt-28 bg-fawn-soft py-16 sm:py-24">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-8">
